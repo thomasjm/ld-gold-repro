@@ -5,18 +5,14 @@ author:              "Author name here"
 maintainer:          "example@example.com"
 copyright:           "2023 Author name here"
 
-extra-source-files:
-- README.md
-- CHANGELOG.md
-
 dependencies:
 - base >= 4.7 && < 5
 - base64-bytestring
 - bytestring
 - data-default
 - filepath
+- leveldb-haskell
 - monad-logger
-- optparse-applicative
 - process
 - string-interpolate
 - text

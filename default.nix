@@ -25,14 +25,25 @@ let
 
   filterSubdir = subDir: pkgs.haskell-nix.haskellLib.cleanSourceWith { inherit src subDir; };
 
-  staticOptions = import ./static.nix {
-    inherit (pkgs) callPackage gcc runCommand;
-    inherit symbols;
+  extraArgs = ''${if symbols then "-g" else ""}'';
+
+  staticOptions = {
+    packages.ld-gold-repro.components.exes.ld-gold-repro.configureFlags = [
+      # ''--ghc-options="-pgml g++ ${extraArgs} -optl-Wl,--allow-multiple-definition -optl-Wl,--whole-archive -optl-Wl,-Bstatic -optl-Wl,-lsnappy -optl-Wl,-lsodium -optl-Wl,-Bdynamic -optl-Wl,--no-whole-archive"''
+      ''--ghc-options="-pgml g++ ${extraArgs} -optl-Wl,--allow-multiple-definition -optl-Wl,--whole-archive -optl-Wl,-Bstatic -optl-Wl,-lsnappy -optl-Wl,-Bdynamic -optl-Wl,--no-whole-archive"''
+    ];
+    packages.ld-gold-repro.components.exes.ld-gold-repro.libs = [
+      (pkgs.snappy.override { static = true; })
+      (pkgs.leveldb.override { static = true; })
+      # (callPackage ./nix/static_libsodium.nix {})
+      # (callPackage ./nix/static_zeromq.nix {})
+    ];
+    packages.ld-gold-repro.components.exes.ld-gold-repro.build-tools = [pkgs.gcc];
   };
 
   pinnedNixpkgsCheckout = nixpkgs.path;
 
-  baseModules = ({
+  modules = ({
       # Profiling settings (applied to everything)
       enableProfiling = profile;
       enableLibraryProfiling = profile;
@@ -41,13 +52,7 @@ let
       # Necessary to prevent gcc runtime dependency blowing it up; see
       # https://github.com/input-output-hk/haskell.nix/issues/829
       # Need to watch out for this when turning symbols on
-      packages.codedown-screenshotter.components.exes.codedown-screenshotter.dontStrip = symbols;
-
-      packages.codedown-screenshotter.components.exes.codedown-screenshotter.postInstall = optionalString compress ''
-        ${upx}/bin/upx $out/bin/codedown-screenshotter
-      '';
-
-      packages.process.components.library.preConfigure = ''${nixpkgs.autoconf}/bin/autoreconf -i'';
+      packages.ld-gold-repro.components.exes.ld-gold-repro.dontStrip = symbols;
 
       # Don't use GMP
       packages.ghc-bignum.components.library.configureFlags = [''-f native -f -gmp''];
@@ -55,14 +60,12 @@ let
     }
   );
 
-  modules = baseModules;
-
 in
 
 pkgs.haskell-nix.stackProject {
   inherit src;
 
-  stack-sha256 = "129kff5k32qahlmh7fknkrmrq01pw12qpnh37slirh134489abip";
+  stack-sha256 = "1syaa6x8lw8183abg42mpijb6yi38ri8c4a6jq95q04ppxrkh2nw";
   materialized = ./materialized;
   inherit checkMaterialization;
 

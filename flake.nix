@@ -6,8 +6,8 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  # inputs.haskellNix.url = "github:input-output-hk/haskell.nix/5240aebeac56bb9c6f1313814c761f9b0abd6fe5"; # Broken commit
-  inputs.haskellNix.url = "github:input-output-hk/haskell.nix/4875959faf4e774496a22c431d176ac14a66244b"; # Before broken commit
+  inputs.haskellNix.url = "github:input-output-hk/haskell.nix/5240aebeac56bb9c6f1313814c761f9b0abd6fe5"; # Broken commit
+  # inputs.haskellNix.url = "github:input-output-hk/haskell.nix/4875959faf4e774496a22c431d176ac14a66244b"; # Before broken commit
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/09e8ac77744dd036e58ab2284e6f5c03a6d6ed41";
   inputs.flake-utils.url = "github:numtide/flake-utils";
