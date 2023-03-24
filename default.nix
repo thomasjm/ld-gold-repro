@@ -62,7 +62,7 @@ in
 pkgs.haskell-nix.stackProject {
   inherit src;
 
-  stack-sha256 = "0z9naflc90avjsi1jhn5ffck03630c0iny1x92863qm7cirvfrpw";
+  stack-sha256 = "129kff5k32qahlmh7fknkrmrq01pw12qpnh37slirh134489abip";
   materialized = ./materialized;
   inherit checkMaterialization;
 
