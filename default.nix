@@ -29,14 +29,11 @@ let
 
   staticOptions = {
     packages.ld-gold-repro.components.exes.ld-gold-repro.configureFlags = [
-      # ''--ghc-options="-pgml g++ ${extraArgs} -optl-Wl,--allow-multiple-definition -optl-Wl,--whole-archive -optl-Wl,-Bstatic -optl-Wl,-lsnappy -optl-Wl,-lsodium -optl-Wl,-Bdynamic -optl-Wl,--no-whole-archive"''
       ''--ghc-options="-pgml g++ ${extraArgs} -optl-Wl,--allow-multiple-definition -optl-Wl,--whole-archive -optl-Wl,-Bstatic -optl-Wl,-lsnappy -optl-Wl,-Bdynamic -optl-Wl,--no-whole-archive"''
     ];
     packages.ld-gold-repro.components.exes.ld-gold-repro.libs = [
-      (pkgs.snappy.override { static = true; })
       (pkgs.leveldb.override { static = true; })
-      (pkgs.callPackage ./nix/static_libsodium.nix {})
-      # (callPackage ./nix/static_zeromq.nix {})
+      (pkgs.snappy.override { static = true; })
     ];
     packages.ld-gold-repro.components.exes.ld-gold-repro.build-tools = [pkgs.gcc];
   };
