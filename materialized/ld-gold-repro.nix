@@ -71,28 +71,6 @@
           mainPath = [ "Main.hs" ];
           };
         };
-      tests = {
-        "ld-gold-repro-tests" = {
-          depends = [
-            (hsPkgs."base" or (errorHandler.buildDepError "base"))
-            (hsPkgs."base64-bytestring" or (errorHandler.buildDepError "base64-bytestring"))
-            (hsPkgs."bytestring" or (errorHandler.buildDepError "bytestring"))
-            (hsPkgs."data-default" or (errorHandler.buildDepError "data-default"))
-            (hsPkgs."filepath" or (errorHandler.buildDepError "filepath"))
-            (hsPkgs."ld-gold-repro" or (errorHandler.buildDepError "ld-gold-repro"))
-            (hsPkgs."leveldb-haskell" or (errorHandler.buildDepError "leveldb-haskell"))
-            (hsPkgs."monad-logger" or (errorHandler.buildDepError "monad-logger"))
-            (hsPkgs."process" or (errorHandler.buildDepError "process"))
-            (hsPkgs."string-interpolate" or (errorHandler.buildDepError "string-interpolate"))
-            (hsPkgs."text" or (errorHandler.buildDepError "text"))
-            (hsPkgs."unliftio" or (errorHandler.buildDepError "unliftio"))
-            ];
-          buildable = true;
-          modules = [ "Paths_ld_gold_repro" ];
-          hsSourceDirs = [ "test" ];
-          mainPath = [ "Spec.hs" ];
-          };
-        };
       };
     } // rec { src = (pkgs.lib).mkDefault ./.; }) // {
     cabal-generator = "hpack";
