@@ -8,7 +8,7 @@ import qualified Data.ByteString.Base64 as Base64
 import Data.Default
 import Data.String.Interpolate
 import qualified Data.Text.Encoding as T
-import Options.Applicative (execParser)
+import Database.LevelDB.Base
 import System.FilePath
 import UnliftIO.Concurrent
 import UnliftIO.Exception
