@@ -26,7 +26,7 @@
       licenseFiles = [];
       dataDir = ".";
       dataFiles = [];
-      extraSrcFiles = [ "README.md" "CHANGELOG.md" ];
+      extraSrcFiles = [];
       extraTmpFiles = [];
       extraDocFiles = [];
       };
@@ -38,6 +38,7 @@
           (hsPkgs."bytestring" or (errorHandler.buildDepError "bytestring"))
           (hsPkgs."data-default" or (errorHandler.buildDepError "data-default"))
           (hsPkgs."filepath" or (errorHandler.buildDepError "filepath"))
+          (hsPkgs."leveldb-haskell" or (errorHandler.buildDepError "leveldb-haskell"))
           (hsPkgs."monad-logger" or (errorHandler.buildDepError "monad-logger"))
           (hsPkgs."process" or (errorHandler.buildDepError "process"))
           (hsPkgs."string-interpolate" or (errorHandler.buildDepError "string-interpolate"))
@@ -57,6 +58,7 @@
             (hsPkgs."data-default" or (errorHandler.buildDepError "data-default"))
             (hsPkgs."filepath" or (errorHandler.buildDepError "filepath"))
             (hsPkgs."ld-gold-repro" or (errorHandler.buildDepError "ld-gold-repro"))
+            (hsPkgs."leveldb-haskell" or (errorHandler.buildDepError "leveldb-haskell"))
             (hsPkgs."monad-logger" or (errorHandler.buildDepError "monad-logger"))
             (hsPkgs."process" or (errorHandler.buildDepError "process"))
             (hsPkgs."string-interpolate" or (errorHandler.buildDepError "string-interpolate"))
@@ -78,6 +80,7 @@
             (hsPkgs."data-default" or (errorHandler.buildDepError "data-default"))
             (hsPkgs."filepath" or (errorHandler.buildDepError "filepath"))
             (hsPkgs."ld-gold-repro" or (errorHandler.buildDepError "ld-gold-repro"))
+            (hsPkgs."leveldb-haskell" or (errorHandler.buildDepError "leveldb-haskell"))
             (hsPkgs."monad-logger" or (errorHandler.buildDepError "monad-logger"))
             (hsPkgs."process" or (errorHandler.buildDepError "process"))
             (hsPkgs."string-interpolate" or (errorHandler.buildDepError "string-interpolate"))

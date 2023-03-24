@@ -35,7 +35,7 @@ let
     packages.ld-gold-repro.components.exes.ld-gold-repro.libs = [
       (pkgs.snappy.override { static = true; })
       (pkgs.leveldb.override { static = true; })
-      (callPackage ./nix/static_libsodium.nix {})
+      (pkgs.callPackage ./nix/static_libsodium.nix {})
       # (callPackage ./nix/static_zeromq.nix {})
     ];
     packages.ld-gold-repro.components.exes.ld-gold-repro.build-tools = [pkgs.gcc];
@@ -65,7 +65,7 @@ in
 pkgs.haskell-nix.stackProject {
   inherit src;
 
-  stack-sha256 = "1syaa6x8lw8183abg42mpijb6yi38ri8c4a6jq95q04ppxrkh2nw";
+  stack-sha256 = "0rvaq8l3lkzlbln3szjpzb74wndly7g2v770yf60ar4wjardv5km";
   materialized = ./materialized;
   inherit checkMaterialization;
 

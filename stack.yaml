@@ -3,3 +3,11 @@ resolver: lts-20.1
 
 packages:
 - .
+
+nix:
+  enable: true
+  packages:
+  - zlib
+  - leveldb
+  path:
+  - "nixpkgs=/home/tom/tools/nixpkgs"

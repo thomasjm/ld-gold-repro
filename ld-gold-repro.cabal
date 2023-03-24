@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.35.1.
+-- This file has been generated from package.yaml by hpack version 0.35.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -10,11 +10,7 @@ author:         Author name here
 maintainer:     example@example.com
 copyright:      2023 Author name here
 license:        BSD3
-license-file:   LICENSE
 build-type:     Simple
-extra-source-files:
-    README.md
-    CHANGELOG.md
 
 library
   exposed-modules:
@@ -43,8 +39,8 @@ library
     , bytestring
     , data-default
     , filepath
+    , leveldb-haskell
     , monad-logger
-    , optparse-applicative
     , process
     , string-interpolate
     , text
@@ -78,8 +74,8 @@ executable ld-gold-repro
     , data-default
     , filepath
     , ld-gold-repro
+    , leveldb-haskell
     , monad-logger
-    , optparse-applicative
     , process
     , string-interpolate
     , text
@@ -114,8 +110,8 @@ test-suite ld-gold-repro-tests
     , data-default
     , filepath
     , ld-gold-repro
+    , leveldb-haskell
     , monad-logger
-    , optparse-applicative
     , process
     , string-interpolate
     , text
