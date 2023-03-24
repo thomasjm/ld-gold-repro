@@ -35,7 +35,7 @@ let
     packages.ld-gold-repro.components.exes.ld-gold-repro.libs = [
       (pkgs.snappy.override { static = true; })
       (pkgs.leveldb.override { static = true; })
-      # (callPackage ./nix/static_libsodium.nix {})
+      (callPackage ./nix/static_libsodium.nix {})
       # (callPackage ./nix/static_zeromq.nix {})
     ];
     packages.ld-gold-repro.components.exes.ld-gold-repro.build-tools = [pkgs.gcc];
